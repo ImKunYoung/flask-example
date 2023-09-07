@@ -3,7 +3,7 @@ node {
         checkout scm
     }
     stage('Build image') {
-        app = docker.build("docker.io/imkunyoung/flask-example")
+        app = docker.build("imkunyoung/flask-example")
     }
     stage('Push image') {
         docker.withRegistry('https://index.docker.io/v1/', 'dockerhub_cred') {
