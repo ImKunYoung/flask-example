@@ -3,10 +3,10 @@ node {
         checkout scm
     }
     stage('Build image') {
-        app = docker.build("ghcr.io/imkunyoung/flask-example")
+        app = docker.build("docker.io/imkunyoung/flask-example")
     }
     stage('Push image') {
-        docker.withRegistry('https://ghcr.io', 'github_cred') {
+        docker.withRegistry('https://index.docker.io/v1/', 'dockerhub_cred') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
